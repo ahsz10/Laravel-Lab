@@ -19,14 +19,19 @@
   <tbody>
     @foreach ($posts as $post)
       <tr>
-        <td>{{$post['id']}}</th>
-        <td>{{$post['title']}}</td>
-        <td>{{$post['posted_by']}}</td>
-        <td>{{$post['creation_date']}}</td>
+
+        <td>{{$post->id}}</th>
+        <td>{{$post->title}}</td>
+        <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
+        <td>{{$post->created_at->format('Y-m-d')}}</td>
         <td>
-            <a href="{{route('posts.show', $post['id'])}}"><x-button type='primary' message='View' ></x-button></a>
-            <a href="#"><x-button type='secondary' message='Edit'></x-button></a>
-            <a href="#"><x-button type='danger' message='Delete' ></x-button></a>
+            <a href="{{route('posts.show', $post['id'])}}"><x-button class='primary' message='View' ></x-button></a>
+            <a href="{{route('posts.edit', $post['id'])}}"><x-button class='secondary' message='Edit'></x-button></a>
+            <form style="display:inline;" method="POST" action="{{route('posts.destroy', $post['id'])}}">
+            @csrf
+            @method('DELETE')
+                <x-button class='danger' message='Delete' ></x-button>
+            </form>
         </td>
       </tr>
     @endforeach

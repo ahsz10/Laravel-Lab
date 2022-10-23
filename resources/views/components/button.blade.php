@@ -4,4 +4,4 @@
     <a class="btn btn-info">View</a> -->
 <!-- </div> -->
 
-<button class="btn btn-{{$type}}">{{$message}}</button> 
+<button class="btn btn-{{$class}}">{{$message}}</button>

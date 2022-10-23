@@ -12,13 +12,13 @@ class Button extends Component
      * @return void
      */
 
-    public $type;
+    public $class;
     public $message;
     // public $route;
 
-    public function __construct($type, $message)
+    public function __construct($class, $message)
     {
-        $this->type = $type;
+        $this->class = $class;
         $this->message = $message;
         // $this->route = $route;
         //
