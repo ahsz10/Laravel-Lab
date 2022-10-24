@@ -37,4 +37,8 @@
     @endforeach
   </tbody>
 </table>
+<div class="pagination justify-content-center">
+
+    {{ $posts->links() }}
+</div>
 @endsection

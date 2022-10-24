@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
-
+use Illuminate\Support\Facades\DB;
 class PostController extends Controller{
 
     // public function test(){
@@ -14,14 +14,19 @@ class PostController extends Controller{
 
     public function index(){
         // return 'index';
-        $allPosts = Post::all();
+        // $allPosts = Post::all();
+        $allPosts = Post::orderBy('id','asc')->paginate(20);
+        // $allPosts = DB::table('users')->paginate(15);
+        // dd($allPosts)
         // dd($allPosts);
         // $allPosts = [
         //     ['id' => 1 , 'title' => 'laravel is cool', 'posted_by' => 'Ahmed', 'creation_date' => '2022-10-22'],
         //     ['id' => 2 , 'title' => 'PHP deep dive', 'posted_by' => 'Mohamed', 'creation_date' => '2022-10-15'],
         // ];
+        // dd($allPosts);
         return view('posts.index',[
             'posts' => $allPosts
+            // 'posts' => Post::orderBy('updated_at','desc')->paginate(20);
         ]);
     }
     public function create(){
