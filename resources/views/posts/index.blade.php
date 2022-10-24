@@ -19,7 +19,6 @@
   <tbody>
     @foreach ($posts as $post)
       <tr>
-
         <td>{{$post->id}}</th>
         <td>{{$post->title}}</td>
         <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
