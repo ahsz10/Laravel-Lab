@@ -13,16 +13,16 @@
                 <label class="form-label">Description</label>
                 <textarea name="description" class="form-control"></textarea>
                 <!-- <input type="text" class="form-control" > -->
-              </div>
+            </div>
 
-              <div class="mb-3">
+            <div class="mb-3">
                 <label class="form-label">Post Creator</label>
                 <select name="user_id" class="form-control">
                     @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
                 </select>
-              </div>
+            </div>
 
             <button type="submit" class="btn btn-success">Submit</button>
           </form>

@@ -30,15 +30,17 @@
             <form style="display:inline;" method="POST" action="{{route('posts.destroy', $post['id'])}}">
             @csrf
             @method('DELETE')
-                <x-button class='danger' message='Delete' ></x-button>
+                <button class="btn btn-danger" onclick="return confirm('Do you want to Delete this Post?')" >Delete</button>
             </form>
+            <!-- <button type="submit" class="btn btn-danger" onclick="return confirm('confirm')" >Delete</button> -->
+
         </td>
       </tr>
     @endforeach
   </tbody>
 </table>
+<
 <div class="pagination justify-content-center">
-
     {{ $posts->links() }}
 </div>
 @endsection

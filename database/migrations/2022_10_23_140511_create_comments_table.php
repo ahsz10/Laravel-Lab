@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            // $table->bigInteger('user_id');
+            $table->text('body');
+            // $table->bigInteger('commentable_id');
+            // $table->string('commentable_type');
+            $table->morphs('commentable');
             $table->timestamps();
-            $table->text('comment_description');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('post_id')->nullable();
-            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
+
 
     /**
      * Reverse the migrations.
