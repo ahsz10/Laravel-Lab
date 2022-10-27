@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePostRequest;
+
 class PostController extends Controller{
 
     // public function test(){
@@ -51,7 +53,7 @@ class PostController extends Controller{
         ]);
     }
 
-    public function store(){
+    public function store(StorePostRequest $request){
         // $data = request();
 
         $title = request()->title;
@@ -78,7 +80,7 @@ class PostController extends Controller{
         ]);
     }
 
-    public function update($postId){
+    public function update(StorePostRequest $request, $postId){
         $singlePost = Post::findOrFail($postId);
 
         $singlePost->update([
