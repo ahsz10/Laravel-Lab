@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller{
 
