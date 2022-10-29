@@ -30,7 +30,7 @@ class CommentsController extends Controller
     public function destroy($postId){
         $singlePost = Post::findOrFail($postId);
 
-        dd($singlePost['']);
+        // dd($singlePost['']);
         $singlePost -> delete();
         return redirect()->route('posts.index');
 
