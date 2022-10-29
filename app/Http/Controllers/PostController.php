@@ -8,16 +8,18 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Jobs\PruneOldPostsJob;
 
 class PostController extends Controller{
 
     // public function test(){
     //     return 'hello from Controller';
-    // }
+    //}
 
     public function index(){
         // return 'index';
         // $allPosts = Post::all();
+        // PruneOldPostsJob::dispatch();
         $allPosts = Post::orderBy('id','asc')->paginate(20);
         // $allPosts = DB::table('users')->paginate(15);
         // dd($allPosts)
