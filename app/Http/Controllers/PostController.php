@@ -21,7 +21,8 @@ class PostController extends Controller{
         // return 'index';
         // $allPosts = Post::all();
         // PruneOldPostsJob::dispatch();
-        $allPosts = Post::orderBy('id','asc')->paginate(20);
+        // $allPosts = Post::orderBy('id','asc')->paginate(20);
+        $allPosts = Post::with('User')->paginate(20);
         // $allPosts = DB::table('users')->paginate(15);
         // dd($allPosts)
         // $allPosts = [
