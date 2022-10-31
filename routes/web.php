@@ -76,14 +76,14 @@ Route::get('/auth/google/redirect', function () {
 Route::get('/auth/google/callback', function () {
     $googleUser = Socialite::driver('google')->stateless()->user();
 
-    // dd($githubUser);
+    // dd($googleUser);
     $user = User::updateOrCreate([
         'email' => $googleUser->email,
     ], [
         'name' => $googleUser->name,
         'email' => $googleUser->email,
-        'github_token' => $googleUser->token,
-        'github_refresh_token' => $googleUser->refreshToken,
+        'google_token' => $googleUser->token,
+        'google_refresh_token' => $googleUser->refreshToken,
     ]);
 
 
