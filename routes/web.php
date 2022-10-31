@@ -68,3 +68,27 @@ Route::get('/auth/callback', function () {
     return to_route('posts.index');
     // $user->token
 });
+
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+})->name('auth.google');
+
+Route::get('/auth/google/callback', function () {
+    $googleUser = Socialite::driver('google')->stateless()->user();
+
+    // dd($githubUser);
+    $user = User::updateOrCreate([
+        'email' => $googleUser->email,
+    ], [
+        'name' => $googleUser->name,
+        'email' => $googleUser->email,
+        'github_token' => $googleUser->token,
+        'github_refresh_token' => $googleUser->refreshToken,
+    ]);
+
+
+    Auth::login($user);
+
+    return to_route('posts.index');
+    // $user->token
+});
