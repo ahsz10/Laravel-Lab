@@ -90,5 +90,6 @@ Route::get('/auth/google/callback', function () {
     Auth::login($user);
 
     return to_route('posts.index');
+    //
     // $user->token
 });

@@ -115,8 +115,8 @@ class PostController extends Controller{
 
     public function destroy($postId){
         $singlePost = Post::findOrFail($postId);
-        Storage::delete($singlePost->image);
         $singlePost -> delete();
+        // Storage::delete($singlePost->image);
         return redirect()->route('posts.index');
         // dd($singlePost);
 
